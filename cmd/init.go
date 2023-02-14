@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/urfave/cli/v2"
 )
 
@@ -29,8 +30,28 @@ var InitCMD = &cli.Command{
 			Usage: "Creates a VCS `IGNORE` file (i.e. .gitignore) [possible values: none, git]",
 		},
 	},
-	Action: func(ctx *cli.Context) error {
-		fmt.Println("init")
-		return nil
-	},
+	Action: InitAction,
+}
+
+func InitAction(ctx *cli.Context) error {
+	fmt.Println("init")
+	vcs := false
+	prompt := &survey.Confirm{
+		Message: "Do you want a .gitignore to be created?",
+	}
+	survey.AskOne(prompt, &vcs)
+	vcs_file := ".gitignore"
+	if vcs {
+		prompt_vcs_file := &survey.Select{
+			Message: "Choose a VCS ignore file :",
+			Options: []string{"git", "svn", "none"},
+		}
+		survey.AskOne(prompt_vcs_file, &vcs_file)
+	}
+	title := ""
+	prompt_title := &survey.Input{
+		Message: "What title would you like to give the book?",
+	}
+	survey.AskOne(prompt_title, &title)
+	return nil
 }
