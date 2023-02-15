@@ -40,5 +40,6 @@ COPYRIGHT:
 + [fsnotify](https://github.com/fsnotify/fsnotify) for file system notifications
 + [cli](https://github.com/urfave/cli) for building command line interface
 + [survey](https://github.com/go-survey/survey) for building interactive and accessible prompts
-+ [goldmark](https://github.com/yuin/goldmark) for parsering and rendering Markdown 
++ [goldmark](https://github.com/yuin/goldmark) for parsering and rendering Markdown
++ [go-socket.io](https://github.com/googollee/go-socket.io) for updating web page realtime on md-files changes  
 + more in `go.mod`
