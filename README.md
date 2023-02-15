@@ -42,4 +42,5 @@ COPYRIGHT:
 + [survey](https://github.com/go-survey/survey) for building interactive and accessible prompts
 + [goldmark](https://github.com/yuin/goldmark) for parsering and rendering Markdown
 + [go-socket.io](https://github.com/googollee/go-socket.io) for updating web page realtime on md-files changes  
++ []https://github.com/Masterminds/semver for parsing semantic versions
 + more in `go.mod`
