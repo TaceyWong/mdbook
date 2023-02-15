@@ -34,3 +34,10 @@ GLOBAL OPTIONS:
 COPYRIGHT:
    © 2023 TaceyWong under GPL3
 ```
+
+## Acknowledgements
+
++ [fsnotify](https://github.com/fsnotify/fsnotify) for file system notifications
++ [cli](https://github.com/urfave/cli) for building command line interface
++ [survey](https://github.com/go-survey/survey) for building interactive and accessible prompts
++ more in `go.mod`
