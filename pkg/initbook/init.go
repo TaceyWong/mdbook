@@ -1,4 +1,4 @@
-package init
+package initbook
 
 import (
 	"fmt"

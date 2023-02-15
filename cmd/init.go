@@ -1,9 +1,10 @@
 package cmd
 
 import (
-	"fmt"
+	"os"
 
 	"github.com/AlecAivazis/survey/v2"
+	"github.com/TaceyWong/mdbook/pkg/initbook"
 	"github.com/urfave/cli/v2"
 )
 
@@ -34,24 +35,26 @@ var InitCMD = &cli.Command{
 }
 
 func InitAction(ctx *cli.Context) error {
-	fmt.Println("init")
-	vcs := false
+	isVCS := false
 	prompt := &survey.Confirm{
-		Message: "Do you want a .gitignore to be created?",
+		Message: "Do you want a VCS ignore to be created?",
+		Default: true,
 	}
-	survey.AskOne(prompt, &vcs)
-	vcs_file := ".gitignore"
-	if vcs {
-		prompt_vcs_file := &survey.Select{
+	survey.AskOne(prompt, &isVCS)
+	vcs := "git"
+	if isVCS {
+		prompt_vcs := &survey.Select{
 			Message: "Choose a VCS ignore file :",
 			Options: []string{"git", "svn", "none"},
 		}
-		survey.AskOne(prompt_vcs_file, &vcs_file)
+		survey.AskOne(prompt_vcs, &vcs)
 	}
 	title := ""
 	prompt_title := &survey.Input{
 		Message: "What title would you like to give the book?",
 	}
 	survey.AskOne(prompt_title, &title)
-	return nil
+	root, _ := os.Getwd()
+	return initbook.InitBook(title, isVCS, vcs, root)
+
 }
