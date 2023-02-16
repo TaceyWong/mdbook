@@ -8,7 +8,7 @@ import (
 
 var TestCMD = &cli.Command{
 	Name:      "test",
-	Usage:     "Tests that a book's Rust code samples compile",
+	Usage:     "Tests that a book's code samples compile",
 	ArgsUsage: "[dir]  \n\n\t [dir] Root directory for the book (Defaults to the current directory when omitted)",
 
 	Flags: []cli.Flag{

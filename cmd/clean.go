@@ -1,8 +1,10 @@
 package cmd
 
 import (
-	"fmt"
+	"os"
+	"path/filepath"
 
+	"github.com/TaceyWong/mdbook/pkg/utils"
 	"github.com/urfave/cli/v2"
 )
 
@@ -18,8 +20,15 @@ var CleanCMD = &cli.Command{
 			Usage:   "Output `directory` for the book\n\tRelative paths are interpreted relative to the book's root directory.",
 		},
 	},
-	Action: func(ctx *cli.Context) error {
-		fmt.Println("clean")
-		return nil
-	},
+	Action: CleanAction,
+}
+
+func CleanAction(ctx *cli.Context) error {
+	root, _ := os.Getwd()
+	if ctx.NArg() > 0 {
+		root = ctx.Args().First()
+	}
+	bookDir := filepath.Join(root, "book")
+	utils.RemoveDir(bookDir)
+	return nil
 }

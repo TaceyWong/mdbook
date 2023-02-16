@@ -12,3 +12,13 @@ func CreateDirIfNotExist(path string) error {
 	}
 	return err
 }
+
+// Remove file any way
+func RemoveFile(path string) error {
+	return os.Remove(path)
+}
+
+// Remove dir any way
+func RemoveDir(path string) error {
+	return os.RemoveAll(path)
+}

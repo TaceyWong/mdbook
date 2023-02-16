@@ -20,7 +20,7 @@ AUTHOR:
 COMMANDS:
    init         Creates the boilerplate structure and files for a new book
    build        Builds a book from its markdown files
-   test         Tests that a book's Rust code samples compile
+   test         Tests that a book's code samples compile
    clean        Deletes a built book
    completions  Generate shell completions for your shell to stdout
    watch        Watches a book's files and rebuilds it on changes
