@@ -1,4 +1,4 @@
-package initbook
+package book
 
 import (
 	"os"

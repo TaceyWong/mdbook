@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/TaceyWong/mdbook/pkg/initbook"
+	"github.com/TaceyWong/mdbook/pkg/book"
 	"github.com/urfave/cli/v2"
 )
 
@@ -55,6 +55,6 @@ func InitAction(ctx *cli.Context) error {
 	}
 	survey.AskOne(prompt_title, &title)
 	root, _ := os.Getwd()
-	return initbook.InitBook(title, isVCS, vcs, root)
+	return book.InitBook(title, isVCS, vcs, root)
 
 }

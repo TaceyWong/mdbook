@@ -1,4 +1,4 @@
-package initbook
+package book
 
 import (
 	"fmt"
@@ -7,19 +7,20 @@ import (
 	"os/user"
 	"path/filepath"
 
+	"github.com/TaceyWong/mdbook/pkg/utils"
 	"github.com/spf13/viper"
 )
 
 func InitBook(title string, isVCS bool, vsc string, root string) error {
-	if err := CreateIfNotExist(root); err != nil {
+	if err := utils.CreateDirIfNotExist(root); err != nil {
 		return nil
 	}
 	bookPath := filepath.Join(root, "book")
-	if err := CreateIfNotExist(bookPath); err != nil {
+	if err := utils.CreateDirIfNotExist(bookPath); err != nil {
 		return nil
 	}
 	srcPath := filepath.Join(root, "src")
-	if err := CreateIfNotExist(srcPath); err != nil {
+	if err := utils.CreateDirIfNotExist(srcPath); err != nil {
 		return err
 	} else {
 		ioutil.WriteFile(filepath.Join(srcPath, "chapter_1.md"),
@@ -52,15 +53,4 @@ func InitBook(title string, isVCS bool, vsc string, root string) error {
 	confgiPath := filepath.Join(root, "book.toml")
 	fmt.Println(v.WriteConfigAs(confgiPath))
 	return nil
-}
-
-func CreateIfNotExist(path string) error {
-	_, err := os.Stat(path)
-	if err == nil {
-		return nil
-	}
-	if os.IsNotExist(err) {
-		return os.MkdirAll(path, os.ModePerm)
-	}
-	return err
 }
